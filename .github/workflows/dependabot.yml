@@ -1,14 +1,13 @@
 version: 2
 updates:
-    # Enable version updates for Gradle
-    - package-ecosystem: "maven"
-      directory: "/"
-      # Check for updates once daily
-      schedule:
-          interval: "daily"
-name: Build
-on:
-    push:
-        branches: [master]
-    pull_request:
-        branches: [master]
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+  ignore:
+    # ignore Maven APIs/SPIs
+    - dependency-name: org.apache.maven:*
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: "daily"
